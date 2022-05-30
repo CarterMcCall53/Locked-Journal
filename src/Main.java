@@ -177,8 +177,13 @@ public class Main {
 
     //code for viewing all previous journal entry saves
     public static void viewSaves() {
-        File saves = new File("./Saves");
-        for (File file : saves.listFiles()) {
+        File[] saves = new File("./Saves").listFiles();
+        if (saves.length == 0) {
+            System.out.println("No saves found!");
+            firstPage();
+            return;
+        }
+        for (File file : saves) {
             System.out.println(file.getName());
         }
         Scanner input = new Scanner(System.in);
